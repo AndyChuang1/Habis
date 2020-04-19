@@ -23,7 +23,7 @@ function Home() {
         </ul>
       </nav> */}
       <Carousel></Carousel>
-      <BottomNav></BottomNav>
+      {/* <BottomNav></BottomNav> */}
     </div>
   );
 }
