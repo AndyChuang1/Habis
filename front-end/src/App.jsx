@@ -9,6 +9,7 @@ import Search from './views/Search';
 import Bill from './views/Bill';
 import Profile from './views/Profile';
 import MainLayout from './layout/MainLayout';
+import StoreItem from './views/StoreItem';
 
 function App() {
   const [token, setToken] = useState(true);
@@ -17,6 +18,9 @@ function App() {
       <Switch>
         <Route path='/login'>
           <Login setToken={setToken}></Login>
+        </Route>
+        <Route path='/storeItem/:storeId'>
+          <StoreItem></StoreItem>
         </Route>
         <MainLayout>
           <PrivateRoute exact path='/' token={token}>

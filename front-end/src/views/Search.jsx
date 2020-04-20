@@ -1,5 +1,4 @@
 import React from 'react';
-import BottomNav from '../components/BottomNav';
 
 function Search() {
   return (
