@@ -8,27 +8,35 @@ import Home from './views/Home';
 import Search from './views/Search';
 import Bill from './views/Bill';
 import Profile from './views/Profile';
+import MainLayout from './layout/MainLayout';
+import StoreItem from './views/StoreItem';
 
 function App() {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(true);
   return (
     <div className='App'>
       <Switch>
         <Route path='/login'>
           <Login setToken={setToken}></Login>
         </Route>
-        <PrivateRoute exact path='/' token={token}>
-          <Home></Home>
-        </PrivateRoute>
-        <PrivateRoute path='/search' token={token}>
-          <Search></Search>
-        </PrivateRoute>
-        <PrivateRoute path='/bill' token={token}>
-          <Bill></Bill>
-        </PrivateRoute>
-        <PrivateRoute path='/profile' token={token}>
-          <Profile></Profile>
-        </PrivateRoute>
+        <Route path='/storeItem/:storeId'>
+          <StoreItem></StoreItem>
+        </Route>
+        <MainLayout>
+          <PrivateRoute exact path='/' token={token}>
+            <Home></Home>
+          </PrivateRoute>
+
+          <PrivateRoute path='/search' token={token}>
+            <Search></Search>
+          </PrivateRoute>
+          <PrivateRoute path='/bill' token={token}>
+            <Bill></Bill>
+          </PrivateRoute>
+          <PrivateRoute path='/profile' token={token}>
+            <Profile></Profile>
+          </PrivateRoute>
+        </MainLayout>
       </Switch>
     </div>
   );
