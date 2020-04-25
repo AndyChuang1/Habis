@@ -1,18 +1,17 @@
 @import 'global';
 .box
 {
-    position: absolute;
+    position: block;    
     margin:0 auto;
     margin-Top: "10px";
-    left: 25%;
-    right: 25%;
-    width: 50%;
+    width: 672px;
+    margin:0 auto;
     color: "#494949";
 }
 .Banner
 {
     height: 200px;
-    position: relative;    
+    position: relative;
     .Media
     {
         background-color: white;

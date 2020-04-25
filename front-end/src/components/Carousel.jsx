@@ -181,7 +181,7 @@ class BannerExample extends React.Component
     render()
     {
         return (
-            <div class="box">
+            <div class="box">                
                 <Carousel 
                     className="Example"
                     autoPlay={this.state.autoPlay}
@@ -196,7 +196,6 @@ class BannerExample extends React.Component
                         })
                     }
                 </Carousel>
-                
             </div>
             
         )
