@@ -3,12 +3,14 @@ import Carousel from "react-material-ui-carousel"
 import autoBind from "auto-bind"
 import '../assets/style/Carousel.scss';
 
-import { Card, CardContent, CardMedia, Typography, Grid, 
-Button, Checkbox, FormControlLabel, Radio, RadioGroup, 
-FormLabel, Slider } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, Grid, Button} from '@material-ui/core';
 
 import resturent1 from '../assets/img/12a-azure-2019-1024x576.jpeg';
 import resturent2 from '../assets/img/the-marine-room-restaurant-in-la-jolla-top11.jpg';
+import food1 from '../assets/img/super-foods.jpg';
+import food2 from '../assets/img/food2.jpg';
+import organic1 from '../assets/img/organic.jpg';
+import organic2 from '../assets/img/organic2.jpg';
 
 function Banner(props)
 {
@@ -30,7 +32,7 @@ function Banner(props)
                 </Typography>
 
                 <Button variant="outlined" className="ViewButton">
-                    View Now
+                    View
                 </Button>
             </CardContent>
         </Grid>
@@ -85,47 +87,47 @@ function Banner(props)
 
 const items = [
   {
-      Name: "Electronics",
-      Caption: "Electrify your friends!",
+      Name: "Restaurant",
+      Caption: "recommend restaurant!",
       contentPosition: "left",
       Items: [
           {
-              Name: "Macbook Pro",
-              Image: "https://source.unsplash.com/featured/?macbook"
+              Name: "restaurant1",
+              Image: resturent1
           },
           {
-              Name: "iPhone",
-              Image: "https://source.unsplash.com/featured/?iphone"
+              Name: "restaurant2",
+              Image: resturent2
           }
       ]
   },
   {
-      Name: "Home Appliances",
-      Caption: "Say no to manual home labour!",
+      Name: "Delicious Food",
+      Caption: "a drool with envy!",
       contentPosition: "middle",
       Items: [
           {
-              Name: "Washing Machine WX9102",
-              Image: "https://source.unsplash.com/featured/?washingmachine"
+              Name: "food1",
+              Image: food1
           },
           {
-              Name: "Learus Vacuum Cleaner",
-              Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
+              Name: "food2",
+              Image: food2
           }
       ]
   },
   {
-      Name: "Decoratives",
-      Caption: "Give style and color to your living room!",
+      Name: "organic",
+      Caption: "Often eat fresh, new banque!",
       contentPosition: "right",
       Items: [
           {
-              Name: "Living Room Lamp",
-              Image: "https://source.unsplash.com/featured/?lamp"
+              Name: "organic1",
+              Image: organic1
           },
           {
-              Name: "Floral Vase",
-              Image: "https://source.unsplash.com/featured/?vase"
+              Name: "organic2",
+              Image: organic2
           }
       ]
   }
@@ -179,9 +181,7 @@ class BannerExample extends React.Component
     render()
     {
         return (
-            <div style={{marginTop: "50px", color: "#494949"}}>
-                <h2>Example: eBay&trade; style</h2>
-
+            <div class="box">
                 <Carousel 
                     className="Example"
                     autoPlay={this.state.autoPlay}
@@ -196,51 +196,6 @@ class BannerExample extends React.Component
                         })
                     }
                 </Carousel>
-
-
-                <FormLabel component="legend">Options</FormLabel>
-                <FormControlLabel
-                    control={
-                        <Checkbox onChange={this.toggleAutoPlay} checked={this.state.autoPlay} value="autoplay" color="primary"/>
-                    }
-                    label="Auto-play"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox onChange={this.toggleIndicators} checked={this.state.indicators} value="indicators" color="primary"/>
-                    }
-                    label="Indicators"
-                />
-
-                <FormControlLabel
-                    control={
-                        <RadioGroup name="animation" value={this.state.animation} onChange={this.changeAnimation} row style={{marginLeft: "10px"}}>
-                            <FormControlLabel value="fade" control={<Radio color="primary"/>} label="Fade"/>
-                            <FormControlLabel value="slide" control={<Radio color="primary"/>} label="Slide"/>
-                        </RadioGroup>
-                    }
-                />
-
-                <FormControlLabel
-                    control={
-                        <div style={{width: 300}}>
-                            <Typography id="discrete-slider" gutterBottom>
-                                Animation Duration (Timeout) in ms
-                            </Typography>
-                            <Slider
-                                defaultValue={500}
-                                getAriaValueText={() => `${this.state.timeout}ms`}
-                                aria-labelledby="discrete-slider"
-                                valueLabelDisplay="auto"
-                                step={100}
-                                marks
-                                min={100}
-                                max={2000}
-                                onChange={this.changeTimeout}
-                            />
-                        </div>
-                    }
-                />
                 
             </div>
             
