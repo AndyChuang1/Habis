@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
 import Carousel from '../components/Carousel';
+import FoodCard from '../components/FoodCard';
+
 function Home() {
   return (
     <div id='home'>
@@ -24,6 +26,7 @@ function Home() {
       </nav> */}
       <Carousel></Carousel>
       {/* <BottomNav></BottomNav> */}
+      <FoodCard></FoodCard>
     </div>
   );
 }
