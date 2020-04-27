@@ -57,6 +57,19 @@ module.exports = {
       });
     });
   },
+  getUserData(account) {
+    return new Promise((resolve, reject) => {
+      const sqlSmt = `SELECT * from User INNER JOIN Profile on Profile.profileId = User.profileId WHERE account = ?  `;
+      db.serialize(function () {
+        db.all(sqlSmt, [account], function (err, rows) {
+          if (err) {
+            reject(err);
+          }
+          resolve(rows);
+        });
+      });
+    });
+  },
 };
 
 function insertProfile(name, address, email, phone) {

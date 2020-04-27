@@ -8,16 +8,25 @@ router.get('/', function (req, res, next) {
   res.json({ msg: 'Test' });
 });
 router.post('/login', function (req, res, next) {
-  console.log(req);
+  // console.log(req);
   const {
     body: { account, password },
   } = req;
-  console.log('account' + account, 'password' + password);
-  if (account === 'admin' && password === 'admin') {
-    res.json({ msg: 'Login Success' });
-  } else {
-    res.json({ msg: 'Login Failed' });
-  }
+  // console.log('account' + account, 'password' + password);
+  DB.getUserData(account)
+    .then(result => {
+      //解構賦職重新命名account password ,分辨一個是req body 來的account 一個是DB撈出來的結果  作比較
+      let { account: DBaccount, password: DBpassword, address, email, name, phone } = result[0];
+      if (account === DBaccount && password === DBpassword) {
+        res.json({ name, address, email, phone });
+      } else {
+        res.json({ msg: 'Login Failed' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({ msg: 'Login Failed', err });
+    });
 });
 
 router.post('/create', function (req, res, next) {
@@ -28,7 +37,8 @@ router.post('/create', function (req, res, next) {
   DB.createUser(account, password, salt, name, address, email, phone)
     .then(result => {
       if (result) {
-        res.json({ msg: `insert ${JSON.stringify(result)}` });
+        const { userId, profileId, name } = result;
+        res.json({ msg: `insert Name : ${name} userId : ${userId} ProfileId: ${profileId}` });
         return;
       }
     })
