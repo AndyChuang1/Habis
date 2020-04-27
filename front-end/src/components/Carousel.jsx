@@ -16,12 +16,12 @@ function Banner(props)
 {
     if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
-    const totalItems = props.length ? props.length : 3;
+    const totalItems = props.length ? props.length : 2;
     const mediaLength = totalItems - 1;
 
     let items = [];
     const content = (
-        <Grid item xs={12 / totalItems} key="content">
+        <Grid item xs={3} key="content">
             <CardContent className="Content">
                 <Typography className="Title">
                     {props.item.Name}
@@ -44,7 +44,7 @@ function Banner(props)
         const item = props.item.Items[i];
 
         const media = (
-            <Grid item xs={12 / totalItems} key={item.Name}>
+            <Grid item xs={9} key={item.Name}>
                 {/* <Link href={`/item/${item.Id}`} className="Link"> */}
                     <CardMedia
                         className="Media"
@@ -95,39 +95,27 @@ const items = [
               Name: "restaurant1",
               Image: resturent1
           },
-          {
-              Name: "restaurant2",
-              Image: resturent2
-          }
       ]
   },
   {
       Name: "Delicious Food",
       Caption: "a drool with envy!",
-      contentPosition: "middle",
+      contentPosition: "right",
       Items: [
           {
-              Name: "food1",
-              Image: food1
+              Name: "restaurant2",
+              Image: resturent2
           },
-          {
-              Name: "food2",
-              Image: food2
-          }
       ]
   },
   {
       Name: "organic",
       Caption: "Often eat fresh, new banque!",
-      contentPosition: "right",
+      contentPosition: "left",
       Items: [
           {
-              Name: "organic1",
-              Image: organic1
-          },
-          {
-              Name: "organic2",
-              Image: organic2
+              Name: "food2",
+              Image: food2
           }
       ]
   }
