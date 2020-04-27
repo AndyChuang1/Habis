@@ -89,14 +89,27 @@
 
         .Title
         {
-            font-size: $bigger-font-size;
-            font-weight: 500;
+            @media screen and (max-width: 480px){
+                font-size: 15px;
+                font-weight: 500;
+                
+            }
+            @media screen and (min-width: 500px) {
+                font-size: $bigger-font-size;
+                font-weight: 500;
+            }
+            
         }
 
         .Caption
         {
             margin-top: 10px;
-            font-size: $normal-font-size;
+            @media screen and (max-width: 480px){
+                font-size: 12px;
+            }
+            @media screen and (min-width: 500px) {
+                font-size: $normal-font-size;
+            }
         }
 
         .ViewButton
@@ -104,7 +117,12 @@
             margin-top: 10px;
             color: white;
 
-            font-size: $normal-font-size;
+            @media screen and (max-width: 480px){
+                font-size: 12px;
+            }
+            @media screen and (min-width: 500px) {
+                font-size: $normal-font-size;
+            }
             border: 3px solid white;
             text-transform: capitalize;
 
