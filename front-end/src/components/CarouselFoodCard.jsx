@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
         };
 
       return (
-        <div id='Ad_Card' className={classes.root}>
+        <div id='Ad_CarouselFoodCard' className={classes.root}>
 
             <Slider {... settings}>    
             {items.map(item => {

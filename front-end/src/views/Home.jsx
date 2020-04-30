@@ -4,6 +4,7 @@ import BottomNav from '../components/BottomNav';
 import Carousel from '../components/Carousel';
 import FoodCard from '../components/FoodCard';
 import CarouselFoodCard from '../components/CarouselFoodCard';
+import Card from '../components/multiCard';
 function Home() {
   return (
     <div id='home'>
@@ -26,7 +27,8 @@ function Home() {
       </nav> */}
       <Carousel></Carousel>
       {/* <BottomNav></BottomNav> */}
-      <CarouselFoodCard></CarouselFoodCard>
+      <CarouselFoodCard></CarouselFoodCard> 
+      <Card></Card>
       <FoodCard></FoodCard>
     </div>
   );
