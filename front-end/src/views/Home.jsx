@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
 import Carousel from '../components/Carousel';
 import FoodCard from '../components/FoodCard';
-
+import CarouselFoodCard from '../components/CarouselFoodCard';
 function Home() {
   return (
     <div id='home'>
@@ -26,6 +26,7 @@ function Home() {
       </nav> */}
       <Carousel></Carousel>
       {/* <BottomNav></BottomNav> */}
+      <CarouselFoodCard></CarouselFoodCard>
       <FoodCard></FoodCard>
     </div>
   );
