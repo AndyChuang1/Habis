@@ -10,6 +10,10 @@ import juice from '../assets/img/juice.jpg';
 import donot from '../assets/img/donot.jpg';
 import truck from '../assets/img/truck.jpg';
 import rice from '../assets/img/rice.jpg';
+//carousel
+import resturent1 from '../assets/img/12a-azure-2019-1024x576.jpeg';
+import resturent2 from '../assets/img/the-marine-room-restaurant-in-la-jolla-top11.jpg';
+import food2 from '../assets/img/food2.jpg';
 var items = [
   {
     id: 'card1',
@@ -52,6 +56,41 @@ var items = [
     title: 'Delicious!',
   },
 ];
+const AD_store = [
+  {
+    Name: 'Restaurant',
+    Caption: 'recommend restaurant!',
+    contentPosition: 'left',
+    Items: [
+      {
+        Name: 'restaurant1',
+        Image: resturent1,
+      },
+    ],
+  },
+  {
+    Name: 'Delicious Food',
+    Caption: 'a drool with envy!',
+    contentPosition: 'right',
+    Items: [
+      {
+        Name: 'restaurant2',
+        Image: resturent2,
+      },
+    ],
+  },
+  {
+    Name: 'organic',
+    Caption: 'Often eat fresh, new banque!',
+    contentPosition: 'left',
+    Items: [
+      {
+        Name: 'food2',
+        Image: food2,
+      },
+    ],
+  },
+];
 function Home() {
   const [storeItems, setStoreItems] = useState(items);
   return (
@@ -73,7 +112,7 @@ function Home() {
           </li>
         </ul>
       </nav> */}
-      <Carousel></Carousel>
+      <Carousel AD_storeData={AD_store}></Carousel>
       {/* <BottomNav></BottomNav> */}
       <MultiCard storeDatas={storeItems}></MultiCard>
     </div>
