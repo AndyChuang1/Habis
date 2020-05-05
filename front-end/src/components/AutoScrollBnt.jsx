@@ -44,7 +44,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,       
+    backgroundColor: theme.palette.background.paper,
+  },
+  flexContainer: {
+    justifyContent: 'center', //置中style 因為root 是使用flex
   },
 }));
 
@@ -67,7 +70,7 @@ export default function ScrollableTabsButtonAuto() {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
-          className={classes.MuiTab}          
+          classes={{ flexContainer: classes.flexContainer }} //套用上面的置中style
         >
           <Tab label="Delivery" {...a11yProps(0)} />
           <Tab label="Pick-UP" {...a11yProps(1)} />
