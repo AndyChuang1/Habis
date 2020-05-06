@@ -58,11 +58,11 @@ module.exports = {
             'FOREIGN KEY (storeId) REFERENCES Store(storeId) )'
       );
       db.run(
-        'CREATE TABLE IF NOT EXISTS Order (' +
-          'orderId    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,' +
-          'userId     INTEGER,' +
-          'updateTime DATETIME NOT NULL,' +
-          'note       TEXT,' +
+        'CREATE TABLE IF NOT EXISTS OrderList (' +
+          'orderListId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,' +
+          'userId      INTEGER,' +
+          'updateTime  DATETIME NOT NULL,' +
+          'note        TEXT,' +
             'FOREIGN KEY (userId) REFERENCES User(userId) )'
       );
       db.run(
@@ -79,12 +79,12 @@ module.exports = {
       );
       db.run(
         'CREATE TABLE IF NOT EXISTS OrderDetail (' +
-          'detailId  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,' +
-          'orderId   INTEGER,' +
-          'quantity  INTEGER NOT NULL,' +
-          'productId INTEGER,' +
-            'FOREIGN KEY (orderId)   REFERENCES Order(orderId),' +
-            'FOREIGN KEY (productId) REFERENCES Product(productId) )'
+          'detailId    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,' +
+          'orderListId INTEGER,' +
+          'quantity    INTEGER NOT NULL,' +
+          'productId   INTEGER,' +
+            'FOREIGN KEY (orderListId) REFERENCES OrderList(orderListId),' +
+            'FOREIGN KEY (productId)   REFERENCES Product(productId) )'
       );
 
       // Store 關聯的 Table
