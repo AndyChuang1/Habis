@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Carousel from '../components/Carousel';
 import AutoScrBnt from '../components/AutoScrollBnt';
 import MultiCard from '../components/MultiCard';
@@ -20,6 +20,9 @@ var items = [
     image: pizza,
     alt: 'pizza pic',
     title: 'Delicious!',
+    delivery: true,
+    pickUp: true,
+    stayIn: true,
   },
   {
     id: 'card2',
@@ -28,6 +31,9 @@ var items = [
     image: juice,
     alt: 'juice pic',
     title: 'Delicious!',
+    delivery: false,
+    pickUp: true,
+    stayIn: false,
   },
   {
     id: 'card3',
@@ -36,6 +42,9 @@ var items = [
     image: donot,
     alt: 'donot pic',
     title: 'Delicious!',
+    delivery: false,
+    pickUp: true,
+    stayIn: true,
   },
   {
     id: 'card4',
@@ -44,6 +53,9 @@ var items = [
     image: truck,
     alt: 'truck pic',
     title: 'Delicious!',
+    delivery: false,
+    pickUp: false,
+    stayIn: true,
   },
   {
     id: 'card5',
@@ -52,6 +64,9 @@ var items = [
     image: rice,
     alt: 'rice pic',
     title: 'Delicious!',
+    delivery: true,
+    pickUp: true,
+    stayIn: true,
   },
 ];
 const AD_store = [
@@ -83,6 +98,55 @@ const AD_store = [
 
 function Home() {
   const [storeItems, setStoreItems] = useState(items);
+  const [tab, setTab] = useState(0);
+  // useEffect(() => {
+
+  //   if (tab === 0) {
+  //     const filter = storeItems.filter((eachStore) => {
+  //       return eachStore.delivery === true;
+  //     });
+  //     setStoreItems(filter);
+  //   }
+  //   if (tab === 1) {
+  //     const filter = storeItems.filter((eachStore) => {
+  //       return eachStore.pickUp === true;
+  //     });
+  //     setStoreItems(filter);//改變了storeItems 所以之後的改變了storeItems怎麼filter 都不是原本有全部資料的storeItems
+  //   }
+  //   if (tab === 2) {
+  //     const filter = storeItems.filter((eachStore) => {
+  //       return eachStore.stayIn === true;
+  //     });
+
+  //     setStoreItems(filter);
+  //   }
+
+  //   return () => {
+  //     // Optional; clean up when `count` changed
+  //   };
+  // }, [tab]);
+
+  const filterStore = useMemo(() => {
+    //把storeItems 拿來算好計算出正確的storeItem 不改變原來的storeItems
+    let filter;
+    if (tab === 0) {
+      filter = storeItems.filter((eachStore) => {
+        return eachStore.delivery === true;
+      });
+    }
+    if (tab === 1) {
+      filter = storeItems.filter((eachStore) => {
+        return eachStore.pickUp === true;
+      });
+    }
+    if (tab === 2) {
+      filter = storeItems.filter((eachStore) => {
+        return eachStore.stayIn === true;
+      });
+    }
+    return filter;
+  }, [tab]); //當tab改變做此運算
+
   return (
     <div id="home">
       <h1>Home page</h1>
@@ -102,10 +166,10 @@ function Home() {
           </li>
         </ul>
       </nav> */}
-      <Carousel AD_storeData={AD_store}></Carousel>      
-      <AutoScrBnt></AutoScrBnt>
+      <Carousel AD_storeData={AD_store}></Carousel>
+      <AutoScrBnt tab={tab} setTab={setTab}></AutoScrBnt>
       {/* <BottomNav></BottomNav> */}
-      <MultiCard storeDatas={storeItems}></MultiCard>
+      <MultiCard storeDatas={filterStore}></MultiCard>
     </div>
   );
 }

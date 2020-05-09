@@ -51,19 +51,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto() {
+export default function ScrollableTabsButtonAuto(props) {
+  const { tab, setTab } = props;
+
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  // const [value, setValue] = React.useState(tab);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setTab(newValue);
   };
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={value}
+          value={tab}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -75,25 +77,25 @@ export default function ScrollableTabsButtonAuto() {
           <Tab label="Delivery" {...a11yProps(0)} />
           <Tab label="Pick-UP" {...a11yProps(1)} />
           <Tab label="Stay-IN" {...a11yProps(2)} />
-          <Tab label="News" {...a11yProps(3)} />
-          <Tab label="Item" {...a11yProps(4)} />
+          {/* <Tab label="News" {...a11yProps(3)} />
+          <Tab label="Item" {...a11yProps(4)} /> */}
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={tab} index={0}>
         Delivery
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={tab} index={1}>
         Pick-UP
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={tab} index={2}>
         Stay-IN
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      {/* <TabPanel value={tab} index={3}>
         News
       </TabPanel>
-      <TabPanel value={value} index={4}>
+      <TabPanel value={tab} index={4}>
         Item
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }
